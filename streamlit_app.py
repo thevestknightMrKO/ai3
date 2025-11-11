@@ -73,8 +73,14 @@ CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
        "texts": ["아스카보다 레이가 좋습니다"],
        "images": ["https://i.namu.wiki/i/PEXdxtrSBZ2Ewoyhc-Cge2WONa8qQPr0lRyjiKnM_sMpa7WO60X0CDk80zUpMVZp2GQdt4O8NL17zC53Arvzhg.webp"],
        "videos": ["https://www.youtube.com/watch?v=eppqcuMJchQ&list=RDeppqcuMJchQ&start_radio=1"]
-     },
+  },
 }
+   labels[0]: {
+       "texts": ["와세다 가고시푸다"],
+       "images": ["https://dotandline.net/wp-content/uploads/2019/06/Neon-Genesis-Evangelion-1210x642.jpg"],
+       "videos": ["https://www.youtube.com/watch?v=IJ1Ba2tpWgs&list=RDIJ1Ba2tpWgs&start_radio=1"]
+  },
+
 
 # ======================
 # 유틸
