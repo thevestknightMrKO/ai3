@@ -71,7 +71,7 @@ CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
     # 
      labels[0]: {
        "texts": ["아스카보다 레이가 좋습니다"],
-    #   "images": ["https://.../jjampong1.jpg", "https://.../jjampong2.jpg"],
+       "images": ["https://i.namu.wiki/i/PEXdxtrSBZ2Ewoyhc-Cge2WONa8qQPr0lRyjiKnM_sMpa7WO60X0CDk80zUpMVZp2GQdt4O8NL17zC53Arvzhg.webp"],
        "videos": ["https://www.youtube.com/watch?v=eppqcuMJchQ&list=RDeppqcuMJchQ&start_radio=1"]
      },
 }
