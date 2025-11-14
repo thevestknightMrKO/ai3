@@ -83,7 +83,8 @@ CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
        "texts": ["한자 죽이고 싶"],
        "images": ["https://i1.ruliweb.com/img/23/05/25/188535b44bc9ca48.png"],
        "videos": ["https://www.youtube.com/watch?v=mEZqJ65ra08&list=RDmEZqJ65ra08&start_radio=1"]
-           }
+           },
+}
 # ======================
 # 세션 상태
 # ======================
