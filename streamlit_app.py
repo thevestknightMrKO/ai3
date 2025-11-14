@@ -79,6 +79,61 @@ CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
        "images": ["https://dotandline.net/wp-content/uploads/2019/06/Neon-Genesis-Evangelion-1210x642.jpg"],
        "videos": ["https://www.youtube.com/watch?v=IJ1Ba2tpWgs&list=RDIJ1Ba2tpWgs&start_radio=1"]
   },
+           labels[2]: {
+       "texts": ["한자 죽이고 싶"],
+       "images": ["https://i1.ruliweb.com/img/23/05/25/188535b44bc9ca48.png"],
+       "videos": ["https://www.youtube.com/watch?v=mEZqJ65ra08&list=RDmEZqJ65ra08&start_radio=1"]
+           }
+# ======================
+# 세션 상태
+# ======================
+if "img_bytes" not in st.session_state:
+    st.session_state.img_bytes = None
+if "last_prediction" not in st.session_state:
+    st.session_state.last_prediction = None
+
+# ======================
+# 모델 로드
+# ======================
+FILE_ID = st.secrets.get("GDRIVE_FILE_ID", "1uj2lD8goJDLo9uSg_8HcT4bxnl2trPc8")
+MODEL_PATH = st.secrets.get("MODEL_PATH", "model.pkl")
+
+@st.cache_resource
+def load_model_from_drive(file_id: str, output_path: str):
+    if not os.path.exists(output_path):
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, output_path, quiet=False)
+    return load_learner(output_path, cpu=True)
+
+with st.spinner("🤖 모델 로드 중..."):
+    learner = load_model_from_drive(FILE_ID, MODEL_PATH)
+st.success("✅ 모델 로드 완료")
+
+labels = [str(x) for x in learner.dls.vocab]
+st.write(f"**분류 가능한 항목:** `{', '.join(labels)}`")
+st.markdown("---")
+
+# ======================
+# 라벨 이름 매핑: 여기를 채우세요!
+# 각 라벨당 최대 3개씩 표시됩니다.
+# ======================
+CONTENT_BY_LABEL: dict[str, dict[str, list[str]]] = {
+    # 
+     labels[0]: {
+       "texts": ["아스카보다 레이가 좋습니다"],
+       "images": ["https://i.namu.wiki/i/PEXdxtrSBZ2Ewoyhc-Cge2WONa8qQPr0lRyjiKnM_sMpa7WO60X0CDk80zUpMVZp2GQdt4O8NL17zC53Arvzhg.webp"],
+       "videos": ["https://www.youtube.com/watch?v=eppqcuMJchQ&list=RDeppqcuMJchQ&start_radio=1"]
+  },
+       labels[1]: {
+       "texts": ["와세다 가고시푸다"],
+       "images": ["https://dotandline.net/wp-content/uploads/2019/06/Neon-Genesis-Evangelion-1210x642.jpg"],
+       "videos": ["https://www.youtube.com/watch?v=IJ1Ba2tpWgs&list=RDIJ1Ba2tpWgs&start_radio=1"]
+  },
+    labels[2]: {
+       "texts": ["한자 죽이고 싶다"],
+       "images": ["https://dotandline.net/wp-content/uploads/2019/06/Neon-Genesis-Evangelion-1210x642.jpg"],
+       "videos": ["https://www.youtube.com/watch?v=IJ1Ba2tpWgs&list=RDIJ1Ba2tpWgs&start_radio=1"]
+  },
 }
 
 
